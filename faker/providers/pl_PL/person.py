@@ -1,10 +1,12 @@
 # coding=utf-8
+
 from __future__ import unicode_literals
 from ..person import Provider as PersonProvider
 import random
 
 
 class Provider(PersonProvider):
+
     formats = (
         '{{first_name}} {{last_name}}',
         '{{first_name}} {{last_name}}',
@@ -522,8 +524,10 @@ class Provider(PersonProvider):
 
     prefixes = ('pan', 'pani')
 
-    first_names = (female_first_names[:20] + male_first_names[:20]) + \
-                  (female_first_names + male_first_names)
+    #first_names = (female_first_names[:20] + male_first_names[:20]) + \
+    #              (female_first_names + male_first_names)
+
+    first_names = (female_first_names + male_first_names)
 
     @classmethod
     def last_name(cls):
@@ -532,3 +536,11 @@ class Provider(PersonProvider):
     @classmethod
     def prefix(cls):
         return cls.random_element(cls.prefixes)
+
+    @classmethod
+    def first_name_female(cls):
+        return cls.random_element(cls.female_first_names)
+
+    @classmethod
+    def first_name_male(cls):
+        return cls.random_element(cls.male_first_names)
